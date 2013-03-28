@@ -3,14 +3,14 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+  //, routes = require('./routes')
+//  , user = require('./routes/user')
   , http = require('http')
   , mongoose = require('mongoose')
   , path = require('path');
 
 var app = express();
-mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect('mongodb://localhost/mydb');
 require('./models/user');
 var User = mongoose.model("User");
 

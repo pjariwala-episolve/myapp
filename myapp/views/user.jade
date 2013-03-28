@@ -1,7 +1,12 @@
 extends layout
-
 block content
-  h1= title
-  h2= messages
-  div
-	Just testing views
+ p #{title}
+ div
+  table
+   thead
+    tr
+     th ID
+      tbody
+       each user, i in users
+        tr
+         td #{user._id}
