@@ -6,7 +6,9 @@ block content
    thead
     tr
      th ID
+     th Name
       tbody
        each user, i in users
         tr
          td #{user._id}
+         td #{user.name.first+' '+user.name.last}
