@@ -12,7 +12,9 @@ var express = require('express')
 var app = express();
 mongoose.connect('mongodb://localhost/mydb');
 require('./models/user');
+require('./models/phonebook');
 var User = mongoose.model("User");
+var Phonebook = mongoose.model("Phonebook");
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
