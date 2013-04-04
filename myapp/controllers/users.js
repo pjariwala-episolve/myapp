@@ -9,8 +9,8 @@ exports.list = function(req, res) {
       title: 'Manage Users',
       users: users,
       _id: '',
-      first: '',
-      last: '',
+      firstname: '',
+      lastname: '',
     });
  });
 }
@@ -28,19 +28,18 @@ exports.add = function (req, res) {
 }
 
 exports.findById = function (req, res) {
- //res.send(req.params.uid)
- User.findOne({_id: req.params.uid}, function(err, users) {
+ //res.send(req.params.uid);
+ User.findOne({ _id: req.params.uid }, function (err, users) {
       res.render('user', {
       _id: users._id,
-      first: users.name.first,
-      last: users.name.last,
+      firstname: users.name.first,
+      lastname: users.name.last,
       title: 'Manage Users',
     });
  });
  User.find({}, function(err, users) {
     res.render('user', {
       users: users,
-      title: 'Manage Users',
-    });
+   });
  });
 }
