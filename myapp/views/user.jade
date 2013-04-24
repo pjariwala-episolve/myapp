@@ -3,35 +3,54 @@ block content
  p
  b #{title}
  div
-  form.form-horizontal(method="post", action='/users/add', enctype="multipart/form-data")
-   .control-group
-    label.control-label(for='id') ID
-    .controls
-     input#title.input-input-xlarge(type='text', value="#{_id}",  name="_id", placeholder='Enter ID')
-   .control-group
-    label.control-label(for='first') First Name
-    .controls
-     input#cid.input-input-xlarge(type='text', value="#{firstname}",  name="first", placeholder='Enter First Name')
-   .control-group
-    label.control-label(for='last') Last Name
-    .controls
-     input#title.input-input-xlarge(type='text', value="#{lastname}",  name="last", placeholder='Enter Last Name')
-   .control-group
-    .controls
-     input(type='submit',value='Save')
-  br
-  hr
-  br
-  table
-   thead
-    tr
-     th ID
-     th Name
-     th Action
-      tbody
-       each user, i in users
-        tr
-         td #{user._id}
-         td #{user.name.first+' '+user.name.last}
-         td
-          a(href='/users/' + user._id) Edit
+  if(_id)
+   form.form-horizontal(method="post", action='/users/update/#{_id}', enctype="multipart/form-data")
+    .control-group
+     label.control-label(for='first') First Name
+     .controls
+      input#cid.input-input-xlarge(type='text', value="#{firstname}",  name="first", placeholder='Enter First Name')
+    .control-group
+     label.control-label(for='last') Last Name
+     .controls
+      input#title.input-input-xlarge(type='text', value="#{lastname}",  name="last", placeholder='Enter Last Name')
+    .control-group
+     .controls
+      input(type='submit',value='Save')
+  else
+   form.form-horizontal(method="post", action='/users/add', enctype="multipart/form-data")
+    .control-group
+     label.control-label(for='id') ID
+     .controls
+      input#title.input-input-xlarge(type='text', value="",  name="_id", placeholder='Enter ID')
+    .control-group
+     label.control-label(for='first') First Name
+     .controls
+      input#cid.input-input-xlarge(type='text', value="",  name="first", placeholder='Enter First Name')
+    .control-group
+     label.control-label(for='last') Last Name
+     .controls
+      input#title.input-input-xlarge(type='text', value="",  name="last", placeholder='Enter Last Name')
+    .control-group
+     .controls
+      input(type='submit',value='Save')
+  if(!_id)
+   br
+   hr
+   br
+   table
+    thead
+     tr
+      th ID
+      th Name
+      th Edit
+      th Delete
+       tbody
+        each user, i in users
+         tr
+          td #{user._id}
+          td #{user.name.first+' '+user.name.last}
+          td
+           a(href='/users/' + user._id) Edit
+          td
+           a(href='/users/delete/' + user._id) Delete
+  
