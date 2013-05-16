@@ -1,0 +1,21 @@
+extends layout
+block content
+ p
+ b #{title}
+ br
+ br
+ div
+  form.form-horizontal(method="post", action='/signup/add', enctype="multipart/form-data")
+   .control-group
+    label.control-label(for='username') User Name
+    .controls
+     input#cid.input-input-xlarge(type='text', value="",  name="username", placeholder='Enter User Name')
+   .control-group
+    label.control-label(for='password') Password
+    .controls
+     input#title.input-input-xlarge(type='password', value="",  name="password", placeholder='Enter Password')
+   .control-group
+    .controls
+     input(type='submit',value='Save')
+ br
+ a(href='/login') Login
